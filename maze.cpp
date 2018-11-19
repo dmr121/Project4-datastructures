@@ -1,14 +1,34 @@
 // David Rozmajzl dmr121@zips.uakron.edu
 #include "maze.h"
 
-maze(int r, intc)
+maze(int r, int c)
 {
-  return;
+  row = r;
+  col = c;
+  for (int i = 0; i < r * c; ++i)
+  {
+    theMaze.push_back(i);
+  }
 }
 
 bool neighbors(int cell, int neigh) const
 {
-  return 0;
+  if (cell == neigh + 1 && 0 != cell % col)
+  {
+    return true;
+  }
+  else if (cell == neigh - 1 && (col - 1) != cell % col)
+  {
+    return true;
+  }
+  else if (col == cell - neigh || col == neigh - cell)
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
 }
 
 void printMaze()
