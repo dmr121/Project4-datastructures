@@ -20,7 +20,7 @@ void DisjSets::unionSets(int root1, int root2) {
        s[root1] += s[root2]; //update size of root1 tree
 	   s[root2] = root1;  // Make root1 new root
         }
-    else 
+    else
 	{
 	   s[root2] += s[root1];  //update size of root 2
 	   s[root1] = root2;     // make root2 new root
@@ -33,6 +33,12 @@ void DisjSets::unionSets(int root1, int root2) {
  */
 int DisjSets::find( int x )
 {
-   //write some code
+   if (s[x] < 0)
+	 {
+		 return x;
+	 }
+	 else
+	 {
+		 return s[x] = find(s[x]);
+	 }
 }
-
