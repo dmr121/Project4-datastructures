@@ -12,7 +12,7 @@ maze::maze(int r, int c)
   // Creating the first cell
   theMaze.push_back(mazeCell(false, true, false, true));
   // Creating all the in between cells
-  for (int i = 1; i < r * c; ++i)
+  for (int i = 1; i < (r * c) - 1; ++i)
   {
     theMaze.push_back(mazeCell());
   }
@@ -42,4 +42,48 @@ bool maze::neighbors(int cell, int neigh) const
 
 void maze::printMaze()
 {
+  // Handle the printing of the first cell
+  if (theMaze[0].getBot() == 1)
+  {
+    cout << " _";
+  }
+  else
+  {
+    cout << "  ";
+  }
+
+  // Printing the middle cells
+  for (int i = 1; i < theMaze.size() - 1; ++i)
+  {
+    if (i % col == 0)
+    {
+      cout << "|";
+      cout << endl;
+    }
+    if (theMaze[i].getLeft() == 1)
+    {
+      cout << "|";
+    }
+    else
+    {
+      cout << " ";
+    }
+    if (theMaze[i].getBot() == 1)
+    {
+      cout << "_";
+    }
+    else
+    {
+      cout << " ";
+    }
+  }
+
+  if (theMaze[theMaze.size() - 1].getLeft() == 1)
+  {
+    cout << "|";
+  }
+  else
+  {
+    cout << " ";
+  }
 }
