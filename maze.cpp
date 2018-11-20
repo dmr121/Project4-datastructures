@@ -1,17 +1,26 @@
 // David Rozmajzl dmr121@zips.uakron.edu
 #include "maze.h"
+#include <iostream>
 
-maze(int r, int c)
+using std::cout;
+using std::endl;
+
+maze::maze(int r, int c)
 {
   row = r;
   col = c;
-  for (int i = 0; i < r * c; ++i)
+  // Creating the first cell
+  theMaze.push_back(mazeCell(false, true, false, true));
+  // Creating all the in between cells
+  for (int i = 1; i < r * c; ++i)
   {
-    theMaze.push_back(i);
+    theMaze.push_back(mazeCell());
   }
+  // Creating the last cell
+  theMaze.push_back(mazeCell(true, false, true, false));
 }
 
-bool neighbors(int cell, int neigh) const
+bool maze::neighbors(int cell, int neigh) const
 {
   if (cell == neigh + 1 && 0 != cell % col)
   {
@@ -31,7 +40,6 @@ bool neighbors(int cell, int neigh) const
   }
 }
 
-void printMaze()
+void maze::printMaze()
 {
-  return;
 }

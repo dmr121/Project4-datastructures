@@ -1,10 +1,9 @@
-#include <vector>
-#include <iostream>
-#include "mazeCell.h"
-
 #ifndef MAZE_H_INCLUDED
 #define MAZE_H_INCLUDED
 
+#include <vector>
+#include <iostream>
+#include "mazeCell.h"
 
 class maze {
 

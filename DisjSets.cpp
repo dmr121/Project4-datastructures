@@ -3,7 +3,7 @@
 /**
  * Construct the disjoint sets object.
  */
-DisjSets::DisjSets( int numElements ) : s{ numElements, -1 }
+DisjSets::DisjSets( int numElements ) : s( numElements, -1 )
 {
 }
 
@@ -18,7 +18,7 @@ DisjSets::DisjSets( int numElements ) : s{ numElements, -1 }
 void DisjSets::unionSets(int root1, int root2) {
 	if (s[root1] < s[root2]) {
        s[root1] += s[root2]; //update size of root1 tree
-	   s[root2] = root1;  // Make root1 new root
+	   	 s[root2] = root1;  // Make root1 new root
         }
     else
 	{
