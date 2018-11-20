@@ -40,8 +40,39 @@ bool maze::neighbors(int cell, int neigh) const
   }
 }
 
+void maze::smashWall(int cell, int neigh)
+{
+  if (cell == neigh + 1 && 0 != cell % col)
+  {
+    theMaze[cell].setLeft(false);
+    theMaze[neigh].setRight(false);
+  }
+  else if (cell == neigh - 1 && (col - 1) != cell % col)
+  {
+    theMaze[neigh].setLeft(false);
+    theMaze[cell].setRight(false);
+  }
+  else if (col == cell - neigh)
+  {
+    theMaze[cell].setTop(false);
+    theMaze[neigh].setBot(false);
+  }
+  else if (col == neigh - cell)
+  {
+    theMaze[cell].setBot(false);
+    theMaze[neigh].setTop(false);
+  }
+}
+
 void maze::printMaze()
 {
+  // Print top row of lines
+  cout << "  ";
+  for (int i = 1; i < col; ++i)
+  {
+    cout << " _";
+  }
+  cout << endl;
   // Handle the printing of the first cell
   if (theMaze[0].getBot() == 1)
   {

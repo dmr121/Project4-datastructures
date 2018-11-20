@@ -12,6 +12,7 @@
 // No error checking is performed
 
 #include <vector>
+
 using namespace std;
 
 /**
