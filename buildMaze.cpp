@@ -19,6 +19,7 @@ int main(){
   int columns = 0, rows = 0;
   cout << "Please enter the number of rows greater than 1: ";
   cin >> rows;
+  // Validate integer input
   while (cin.fail() || rows <= 1)
   {
     cin.clear();
@@ -30,6 +31,7 @@ int main(){
 
   cout << "Please enter the number of columns greater than 1: ";
   cin >> columns;
+  // Validate integer input again
   while (cin.fail() || columns <= 1)
   {
     cin.clear();
@@ -44,6 +46,7 @@ int main(){
   char yesORno;
   cin >> yesORno;
   bool loopFlag = true;
+  // Validate char input to be either y or n
   do{
     if (yesORno == 'y' || yesORno == 'n')
     {
@@ -72,6 +75,7 @@ int main(){
     {
       mySet.unionSets(mySet.find(cell1), mySet.find(cell2));
       myMaze.smashWall(cell1, cell2);
+      // Print maze if user indicated it before
       if (yesORno == 'y')
       {
         cout << "Neighbors " << cell1 << ", " << cell2 << " wall smashed";
@@ -83,6 +87,7 @@ int main(){
     twoRandom(cell1, cell2, myMaze.getRow() * myMaze.getCol());
   }
 
+  // Print end result of maze maze only if the user selected n earlier
   if (yesORno == 'n')
   {
     myMaze.printMaze();
@@ -91,6 +96,11 @@ int main(){
   return 0;
 }
 
+//PRECONDITION: n1 and n2 are integers passed by reference
+//              maxN is the maximum number that either n1 and n2 can be
+//
+//POSTCONDITION: Assigns a random integer between 0 and maxN to n1
+//               and a different random integer between 0 and maxN to n2
 void twoRandom(int & n1, int & n2, int maxN)
 {
   n1 = rand() % maxN;
@@ -100,6 +110,10 @@ void twoRandom(int & n1, int & n2, int maxN)
   } while (n1 == n2);
 }
 
+//PRECONDITION: n1 is the root node of the 1st set
+//              n2 is the root node of the 2nd set
+//
+//POSTCONDITION: Returns true if the two nodes have the same root
 bool isConnected(int n1, int n2)
 {
   if (n1 == n2)
